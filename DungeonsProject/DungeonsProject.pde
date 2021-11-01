@@ -8,8 +8,12 @@
 
 boolean upkey,leftkey,downkey,rightkey,spacekey;
 
+//gameobjects
 ArrayList<GameObject> myObjects;
+ArrayList<DarknessCell> darkness;
+Hero myHero;
 
+//mode framework
 int mode;
 final int intro = 1;
 final int game = 2;
@@ -27,6 +31,10 @@ color dirt = #6B5B45;
 //text and font
 PFont VampireZone;
 
+//images and rooms
+PImage map;
+color northroom, eastroom, southroom, westroom;
+
 void setup(){
   mode = intro;
   
@@ -40,6 +48,28 @@ void setup(){
   
   //gif
   myGIF = new AnimatedGIF(10,"frame_" , "_delay-0.07s.gif", width/2, height/2, width, height);
+  
+  //create objects
+  myObjects = new ArrayList<GameObject>(1000);
+  myHero = new Hero();
+  myObjects.add(myHero);
+  
+  //map
+  map = loadImage("map.png");
+
+  //darkness
+  darkness = new ArrayList<DarknessCell>(1000);
+  float size = 50;
+  int x = 0;
+  int y = 0;
+  while(y < height){
+     darkness.add(new DarknessCell(x,y,size));
+     x += size;
+     if (x >= width){
+       x = 0;
+       y += size;
+     }
+  }
 }
 
 
