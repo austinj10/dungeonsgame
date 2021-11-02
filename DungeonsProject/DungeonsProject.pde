@@ -59,7 +59,7 @@ void setup(){
 
   //darkness
   darkness = new ArrayList<DarknessCell>(1000);
-  float size = 50;
+  float size = 3.25;
   int x = 0;
   int y = 0;
   while(y < height){

@@ -16,8 +16,7 @@ void game(){
   //myHero.show();
   //myHero.act();
   
-  
-    darkness.get(0).show();
+
 }
 
 void drawRoom(){
@@ -76,7 +75,8 @@ void drawDarkness(){
   while ( i < darkness.size()) {
     DarknessCell myObj = darkness.get(i);
     myObj.show();
-  } i++;
+    i++;
+  } 
 }
   
   ////darkness
