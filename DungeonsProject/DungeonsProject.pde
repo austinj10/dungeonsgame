@@ -8,7 +8,6 @@
 
 boolean upkey,leftkey,downkey,rightkey,spacekey;
 
-
 //gameobjects
 ArrayList<GameObject> myObjects;
 ArrayList<DarknessCell> darkness;
@@ -54,13 +53,17 @@ void setup(){
   myObjects = new ArrayList<GameObject>(1000);
   myHero = new Hero();
   myObjects.add(myHero);
+  myObjects.add(new Enemy());
+  myObjects.add(new Follower(1,2));
+  myObjects.add(new Follower(2,1));
+  myObjects.add(new Turret(3,1));
   
   //map
   map = loadImage("map.png");
 
   //darkness
   darkness = new ArrayList<DarknessCell>(1000);
-  float size = 2;
+  float size = 4;
   int x = 0;
   int y = 0;
   while(y < height){

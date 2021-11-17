@@ -4,7 +4,6 @@ void game(){
   drawRoom();
   drawGameObjects();
   drawDarkness();
-  //drawLightLayer();
   drawMiniMap();
   
   //int i = 0;
@@ -57,15 +56,16 @@ void drawRoom(){
 }
 
 void drawGameObjects(){
-  int i = 0;
-  while ( i < myObjects.size()) {
+  for (int i = 0; i < myObjects.size(); i++){
     GameObject myObj = myObjects.get(i);
-    myObj.show();
-    myObj.act();
-  if (myObj.hp == 0) {
-      myObjects.remove(i); 
-    } else {
-      i++;
+    if (myObj.roomX == myHero.roomX && myObj.roomY == myHero.roomY){
+      myObj.show();
+      myObj.act();
+      if (myObj.hp <= 0) {
+        myObjects.remove(i); 
+        i--;
+        //println(1);
+      }
     }
   }
 }
@@ -99,6 +99,10 @@ void drawMiniMap(){
   //dot
    fill(255);
    square(myHero.roomX*15+40,myHero.roomY*15+40,15);
+   
+   //hero text
+   textSize(50);
+   text(myHero.hp,25,height-25);
 }
   
   
