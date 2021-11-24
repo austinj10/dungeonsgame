@@ -72,7 +72,7 @@ class Hero extends GameObject{
     if (immunity == true){
       immunitytimer++;
     } 
-    if (immunitytimer > 150){
+    if (immunitytimer > 90){
       immunity = false;
       immunitytimer = 0;
     }
@@ -85,13 +85,29 @@ class Hero extends GameObject{
         if (dist(myHero.location.x, myHero.location.y, obj.location.x, obj.location.y) <= size/2 + obj.size/2) {
           if (immunity == false) {
             myHero.hp--;
+            explode(500,110,white);
             immunity = true;
             }
          }
       }
-      i++;
-    }
+      if (obj instanceof DroppedItem && isCollidingWith(obj)){
+        DroppedItem item = (DroppedItem) obj;
+        if(item.type == GUN){
+          myWeapon = item.w;
+          item.hp = 0;
+      }
+        if(item.type == AMMO){
+          //myWeapon = item.w;
+          //item.hp = 0;
+        }
+        if(item.type == HEALTH){
+          myHero.hp = myHero.hp + 1;
+          item.hp = 0;
+        }
+      }
+     i++;
     if (myHero.hp == 0) mode = gameover;
+    }
   }
-}
+  }
   

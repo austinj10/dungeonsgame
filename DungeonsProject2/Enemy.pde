@@ -46,8 +46,9 @@ class Enemy extends GameObject {
       if (myObj instanceof Bullet && isCollidingWith(myObj)){ //myObjBulletTurret){ !BulletTurret){
           hp = hp - int(myObj.velocity.mag());
           myObj.hp = 0;
-          if (hp < 0){ 
-            explode(1000);
+          if (hp <= 0){ 
+            explode(size,500,red);
+            myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
           }
               
       }

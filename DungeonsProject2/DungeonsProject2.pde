@@ -44,6 +44,11 @@ PImage map;
 PImage map2;
 color northroom, eastroom, southroom, westroom;
 
+//settings: dropped items
+final int AMMO = 0;
+final int HEALTH = 1;
+final int GUN = 2;
+
 
 void setup(){
   mode = intro;

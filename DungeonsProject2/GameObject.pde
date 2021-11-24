@@ -5,6 +5,7 @@ class GameObject {
   int hp;
   int size;
   boolean UFOBullet;
+  color c;
   
   GameObject(){
     location = new PVector (width/2, height/2);
@@ -36,10 +37,10 @@ class GameObject {
     return(inRoomWith(myObj) && d < size/2 + myObj.size/2);
   }
   
-  void explode(int n){
+  void explode(int s, int n, int c){
     int i = 0;
     while (i < n){
-      myObjects.add(new particles(10,location.x, location.y, white));
+      myObjects.add(new particles(s,location.x, location.y, c));
       i++;
     }
   }
