@@ -44,19 +44,19 @@ PImage map;
 PImage map2;
 color northroom, eastroom, southroom, westroom;
 
-  //settings enemies
-  final int turrethp = 500;
-  final int turretsize = 50;
-  final int turretthreshold = 
-  final int turretbulletspeed = 
-  
-  //final int spawnerhp
-  //final int spawnersize
-  //final int spawnerthreshold
-  
-  ////settings weapons
-  final int ShotgunThreshold = 90;
-  final int ShotgunBulletSpeed = 5;
+//GIF
+AnimatedGIF myGIF;
+AnimatedGIF manUP;
+AnimatedGIF manDOWN;
+AnimatedGIF manLEFT;
+AnimatedGIF manRIGHT;
+
+
+//settings: dropped items
+final int AMMO = 0;
+final int HEALTH = 1;
+final int GUN = 2;
+
 
 void setup(){
   mode = intro;
@@ -70,8 +70,11 @@ void setup(){
   VampireZone = createFont("Vampire Zone.ttf",200);
   
   //gif
-  myGIF = new AnimatedGIF(10,"frame_" , "_delay-0.07s.gif", width/2, height/2, width, height);
-  
+  myGIF = new AnimatedGIF(35, 15, "frame_" , "_delay-0.07s.gif");
+  manUP = new AnimatedGIF(4, 15, "man/_sdup/sprite_", ".png");
+  manDOWN = new AnimatedGIF(4, 15, "man/_down/sprite_", ".png");
+  manLEFT = new AnimatedGIF(4, 15, "man/_left/sprite_", ".png");
+  manRIGHT = new AnimatedGIF(4, 15, "man/_right/sprite_", ".png");
   //create objects
   myObjects = new ArrayList<GameObject>(1000);
   myHero = new Hero();
@@ -113,7 +116,7 @@ void setup(){
       myObjects.add(new Lurker(x,y));
     }
     if (roomColor == yellow){
-      //add more
+      myObjects.add(new Spawner(x,y));
     }
     if (roomColor == purple){
       //add more

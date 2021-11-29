@@ -14,7 +14,7 @@ class Bullet extends GameObject {
   }
   
     Bullet(PVector mouse, int color1, int size1) {
-      timer = 35;
+      timer = 50;
       location = new PVector(myHero.location.x, myHero.location.y);
       velocity = mouse;
       //velocity.setMag(20);
