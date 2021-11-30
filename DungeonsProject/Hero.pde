@@ -1,6 +1,5 @@
 class Hero extends GameObject{
 
-  float speed; 
   Weapon myWeapon;
   boolean immunity;
   int immunitytimer;
@@ -8,7 +7,7 @@ class Hero extends GameObject{
   
   Hero(){
     super();//gameobject constructor
-    hp = 5;
+    hpMAX = hp = 5;
     speed = 5;
     roomX = 1;
     roomY = 1;
@@ -108,8 +107,9 @@ class Hero extends GameObject{
           //item.hp = 0;
         }
         if(item.type == HEALTH){
-          myHero.hp = myHero.hp + 1;
+          hp++;
           item.hp = 0;
+          if (hp > hpMAX) hp = hpMAX;
         }
       }
      i++;

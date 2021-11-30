@@ -51,6 +51,7 @@ AnimatedGIF manDOWN;
 AnimatedGIF manLEFT;
 AnimatedGIF manRIGHT;
 
+AnimatedGIF heart;
 
 //settings: dropped items
 final int AMMO = 0;
@@ -71,10 +72,13 @@ void setup(){
   
   //gif
   myGIF = new AnimatedGIF(35, 15, "frame_" , "_delay-0.07s.gif");
-  manUP = new AnimatedGIF(4, 15, "man/_sdup/sprite_", ".png");
+  manUP = new AnimatedGIF(4, 15, "man/_up/sprite_", ".png");
   manDOWN = new AnimatedGIF(4, 15, "man/_down/sprite_", ".png");
   manLEFT = new AnimatedGIF(4, 15, "man/_left/sprite_", ".png");
   manRIGHT = new AnimatedGIF(4, 15, "man/_right/sprite_", ".png");
+  
+  heart = new AnimatedGIF(1, 15, "heart" , ".png");
+  
   //create objects
   myObjects = new ArrayList<GameObject>(1000);
   myHero = new Hero();

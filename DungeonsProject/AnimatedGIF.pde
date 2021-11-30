@@ -18,15 +18,15 @@ class AnimatedGIF {
     rate = r;
   }
   
-  // AnimatedGIF(int n, String prefix, String suffix,int _w, int _h) {
-  //  pics = new PImage[n];
-  //  loadImages(prefix, suffix);
-  //  frame = 0;
-  //  rate = 1;
-  //  _w = x;
-  //  _h = y;
-  //}
-  
+   AnimatedGIF(int n, String prefix, String suffix,int w, int h) {
+    pics = new PImage[n];
+    loadImages(prefix, suffix);
+    frame = 0;
+    rate = 1;
+    w = x;
+    h = y;
+  }
+   
   //show function
   void show(){
     //imageMode(CENTER);
@@ -39,8 +39,6 @@ class AnimatedGIF {
    if (frame == pics.length) frame = 0;
    image(pics[frame], x, y, w, h);
    if (frameCount % rate == 0) frame++;
-
-    
   }
   
   void loadImages(String prefix, String suffix) {
@@ -48,14 +46,6 @@ class AnimatedGIF {
     while (i < pics.length) {
       String leadingZero = "";
       if (pics.length <= 10) leadingZero = "";
-      else if (pics.length <= 100) {
-        if (i < 10) leadingZero = "0";
-        else leadingZero = "";
-      } else if (pics.length > 100) {
-        if (i < 10) leadingZero = "00";
-        else if (i < 100) leadingZero = "0";
-        else leadingZero = ""; 
-      }
       pics[i] = loadImage(prefix+leadingZero+i+suffix);
       i++;
     }

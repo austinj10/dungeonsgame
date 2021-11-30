@@ -2,10 +2,12 @@ class GameObject {
   int roomX, roomY;
   PVector location;
   PVector velocity;
-  int hp;
+  int hp, hpMAX;
   int size;
   boolean UFOBullet;
   color c;
+  int speed;
+  int xp;
   
   GameObject(){
     location = new PVector (width/2, height/2);

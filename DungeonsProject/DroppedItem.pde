@@ -28,15 +28,18 @@ class DroppedItem extends GameObject {
     stroke(black);
     strokeWeight(2);
     if (type == HEALTH){
-      fill(red);
+      //fill(red);
+      //circle(location.x, location.y, size);
+      heart.show(location.x, location.y,size*1.5,size*1.5);
     }
     if (type == AMMO){
       fill(black);
+      circle(location.x, location.y, size);
     }
     if (type == GUN){
       fill(purple);
+      circle(location.x, location.y, size);
     }
-    circle(location.x, location.y, size);
   }
   
   void act(){
