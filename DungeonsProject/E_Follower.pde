@@ -15,7 +15,7 @@ class Follower extends Enemy {
 
   void act() {
     super.act(); 
-   
+
     velocity = new PVector (myHero.location.x - location.x, myHero.location.y - location.y);
     velocity.setMag(2.5);
   }

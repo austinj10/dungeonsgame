@@ -9,22 +9,6 @@ void pause() {
   textSize(60);
   //textMode(CENTER/2);
 
-  //hp text
-  click();
-  textSize(60);
-  fill(shadow);
-  text("max hp: "+myHero.hpMAX, width/2.5, height/3);
-
-  hpbutton = new Button("hp+", 100, 200, 50, 50, shadow, unity);
-  hpbutton.show();
-  if (myHero.xp >= 1){
-    if (hpbutton.clicked){
-      myHero.hp++;
-      myHero.hpMAX = myHero.hpMAX + 1;
-      myHero.xp = myHero.xp - 1;
-    } else myHero.hpMAX = myHero.hpMAX;
-  }
-
   //back
   backbutton = new Button("back", width-100, height-50, 100, 50, dirt, unity);
   backbutton.show();
@@ -32,24 +16,50 @@ void pause() {
     mode = game;
   }
 
+  //hp text
+  click();
+  textSize(60);
+  fill(shadow);
+  text("max hp: "+myHero.hpMAX, width/2.5, height/3);
+
+  hpbutton = new Button("+5 XP", 100, 200, 50, 50, shadow, unity);
+  hpbutton.show();
+  if (myHero.xp >= 5) {
+    if (hpbutton.clicked) {
+      myHero.hp++;
+      myHero.hpMAX = myHero.hpMAX + 1;
+      myHero.xp = myHero.xp - 1;
+    } else myHero.hpMAX = myHero.hpMAX;
+  }
 
   //speed text
   textSize(60);
   fill(shadow);
   text("speed: "+myHero.speed, width/2.5, height/2);
 
-  speedbutton = new Button("Speed+", 100, 300, 50, 50, shadow, unity);
+  speedbutton = new Button("+3 XP", 100, 300, 50, 50, shadow, unity);
   speedbutton.show();
-  if (myHero.xp >= 1){
+  if (myHero.xp >= 3) {
     if (speedbutton.clicked) {
-      myHero.speed = myHero.speed + 0.25;
+      myHero.speed = myHero.speed + 0.5;
       myHero.xp = myHero.xp - 1;
     }
   }
 
   //damage text
   textSize(60);
-  text("damage", width/2.65, height/1.5);
+  text("damage: "+dmg, width/2.65, height/1.5);
+
+  damagebutton = new Button("+1 XP", 100, 400, 50, 50, shadow, unity);
+  damagebutton.show();
+  if (myHero.xp >= 1) {
+    if (damagebutton.clicked) {
+      dmg += 1;
+      myHero.xp = myHero.xp - 1;
+    }
+    //Bullet.velocity(setMag());
+  }
+
 
   //xp text
   textSize(60);

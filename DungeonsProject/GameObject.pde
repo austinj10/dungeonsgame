@@ -8,6 +8,8 @@ class GameObject {
   color c;
   float speed;
   int xp;
+  int bulletSpeed;
+  int damage;
 
   GameObject() {
     location = new PVector (width/2, height/2);

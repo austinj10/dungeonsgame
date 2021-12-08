@@ -12,6 +12,7 @@ boolean upkey, leftkey, downkey, rightkey, spacekey;
 ArrayList<GameObject> myObjects;
 ArrayList<DarknessCell> darkness;
 Hero myHero;
+Weapon myWeapon;
 
 //mode framework
 int mode;
@@ -58,12 +59,14 @@ Button introbutton;
 Button hpbutton;
 Button backbutton;
 Button speedbutton;
+Button damagebutton;
 
 //settings: dropped items
 final int AMMO = 0;
 final int HEALTH = 1;
 final int GUN = 2;
 
+int dmg = 1;
 
 void setup() {
   mode = intro;
@@ -123,7 +126,7 @@ void setup() {
       myObjects.add(new Follower(x, y));
     }
     if (roomColor == blue) {
-      myObjects.add(new Enemy(x, y));
+      myObjects.add(new Enemy(100, 50, x, y));
     }
     if (roomColor == red) {
       myObjects.add(new Turret(x, y));

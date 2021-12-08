@@ -15,6 +15,7 @@ class Hero extends GameObject {
     myWeapon = new MachineGun();
     immunity = true;
     immunitytimer = 0;
+    damage = bulletSpeed;
     //action
     currentAction = manDOWN;
   }
