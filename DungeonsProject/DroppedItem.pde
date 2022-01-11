@@ -6,7 +6,7 @@ class DroppedItem extends GameObject {
 
   DroppedItem(float x, float y, int rx, int ry) {
     type = (int)random(3);
-    if (type == 0) type = AMMO;
+    if (type == 0) type = SIZE;
     if (type == 1) type = HEALTH;
     if (type == 2) type = GUN;
     { 
@@ -33,13 +33,13 @@ class DroppedItem extends GameObject {
       //circle(location.x, location.y, size);
       heart.show(location.x, location.y, size*1.5, size*1.5);
     }
-    if (type == AMMO) {
+    if (type == SIZE) {
       fill(black);
-      circle(location.x, location.y, size);
+      image(shrink, location.x, location.y,size*1.75,size*1.75);
     }
     if (type == GUN) {
       fill(purple);
-      circle(location.x, location.y, size);
+      image(gun,location.x,location.y,size*1.5,size*1.5);
     }
   }
 

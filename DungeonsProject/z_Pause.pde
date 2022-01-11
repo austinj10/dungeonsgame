@@ -28,7 +28,7 @@ void pause() {
     if (hpbutton.clicked) {
       myHero.hp++;
       myHero.hpMAX = myHero.hpMAX + 1;
-      myHero.xp = myHero.xp - 1;
+      myHero.xp = myHero.xp - 5;
     } else myHero.hpMAX = myHero.hpMAX;
   }
 
@@ -42,34 +42,52 @@ void pause() {
   if (myHero.xp >= 3) {
     if (speedbutton.clicked) {
       myHero.speed = myHero.speed + 0.5;
-      myHero.xp = myHero.xp - 1;
+      myHero.xp = myHero.xp - 3;
     }
   }
 
   //damage text
   textSize(60);
-  text("damage: "+dmg, width/2.65, height/1.5);
+  text("damage: "+dmg, width/2.5, height/1.5);
 
-  damagebutton = new Button("+1 XP", 100, 400, 50, 50, shadow, unity);
+  damagebutton = new Button("+2 XP", 100, 400, 50, 50, shadow, unity);
   damagebutton.show();
-  if (myHero.xp >= 1) {
+  if (myHero.xp >= 2) {
     if (damagebutton.clicked) {
-      dmg += 1;
-      myHero.xp = myHero.xp - 1;
+      dmg += 2;
+      myHero.xp = myHero.xp - 2;
     }
-    //Bullet.velocity(setMag());
+    if (dmg == 10){
+     dmg = 10; 
+    }
   }
 
+  //brightness text
+  textSize(60);
+  text("Brightness: "+number, width/2.07, height/1.2);
+
+  brightnessbutton = new Button("+1 XP", 100, 500, 50, 50, shadow, unity);
+  brightnessbutton.show();
+   if (myHero.xp >= 1) {
+    if (brightnessbutton.clicked) {
+      b = b - 5;
+      myHero.xp = myHero.xp - 1;
+      number = number + 1;
+    }
+   }
+    
 
   //xp text
-  textSize(60);
-  text("XP: "+myHero.xp, width/2, height/1.15);
+ textSize(60);
+ text("XP: "+myHero.xp, width/1.3, height/2);
+
 }
 
 
 
-void pauseClicks() {
-  //if (mouseX > width-150 && mouseX < width-50 && mouseY > height-75 && mouseY < height-25) {
-  //  mode = game;
-  //}
-}
+
+  void pauseClicks() {
+    //if (mouseX > width-150 && mouseX < width-50 && mouseY > height-75 && mouseY < height-25) {
+    //  mode = game;
+    //}
+  }

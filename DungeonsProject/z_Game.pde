@@ -83,14 +83,14 @@ void drawMiniMap() {
   float size = 50;
   int x = 0;
   int y = 0;
-  while (y < map.height) {//change to map2 later
+  while (y < map2.height) {//change to map2 later
     opacity = map(50, 0, 30, 0, 100);
     color c = map.get(x, y);//change to map2 later
     fill(c, opacity);
     square(x*15+40, y*15+40, size-35);
     x = x + 1;
     ;
-    if (x >= map.width) {//change to map2 later
+    if (x >= map2.width) {//change to map2 later
       x = 0;
       y = y + 1;
     }

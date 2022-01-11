@@ -44,9 +44,15 @@ PFont VampireZone;
 PImage map;
 PImage map2;
 color northroom, eastroom, southroom, westroom;
+PImage fireball;
+PImage shrink;
+PImage gun;
 
 //GIF
 AnimatedGIF myGIF;
+
+AnimatedGIF blackhole;
+
 AnimatedGIF manUP;
 AnimatedGIF manDOWN;
 AnimatedGIF manLEFT;
@@ -54,19 +60,41 @@ AnimatedGIF manRIGHT;
 
 AnimatedGIF heart;
 
+AnimatedGIF coin;
+
+AnimatedGIF skeletonUP;
+AnimatedGIF skeletonDOWN;
+AnimatedGIF skeletonLEFT;
+AnimatedGIF skeletonRIGHT;
+
+AnimatedGIF zombieUP;
+AnimatedGIF zombieDOWN;
+AnimatedGIF zombieLEFT;
+AnimatedGIF zombieRIGHT;
+
+AnimatedGIF dragonUP;
+AnimatedGIF dragonDOWN;
+AnimatedGIF dragonLEFT;
+AnimatedGIF dragonRIGHT;
+
 //buttons
 Button introbutton;
 Button hpbutton;
 Button backbutton;
 Button speedbutton;
 Button damagebutton;
+Button brightnessbutton;
 
 //settings: dropped items
-final int AMMO = 0;
+final int SIZE = 0;
 final int HEALTH = 1;
 final int GUN = 2;
 
+//variables
 int dmg = 1;
+float b;
+int number = 0;
+int enemynumber;
 
 void setup() {
   mode = intro;
@@ -80,13 +108,34 @@ void setup() {
   VampireZone = createFont("Vampire Zone.ttf", 200);
 
   //gif
-  myGIF = new AnimatedGIF(35, 15, "frame_", "_delay-0.07s.gif");
+  myGIF = new AnimatedGIF(35, 3, "intro/frame_", "_delay-0.07s.gif");//2nd number is how fast gif is
+  
   manUP = new AnimatedGIF(4, 15, "man/_up/sprite_", ".png");
   manDOWN = new AnimatedGIF(4, 15, "man/_down/sprite_", ".png");
   manLEFT = new AnimatedGIF(4, 15, "man/_left/sprite_", ".png");
   manRIGHT = new AnimatedGIF(4, 15, "man/_right/sprite_", ".png");
 
   heart = new AnimatedGIF(1, 15, "heart", ".png");
+  
+  skeletonUP = new AnimatedGIF(4,15,"skeleton/up/Skeleton_", ".png");
+  skeletonDOWN = new AnimatedGIF(4,15,"skeleton/down/Skeleton_", ".png");
+  skeletonRIGHT = new AnimatedGIF(4,15,"skeleton/right/Skeleton_", ".png");
+  skeletonLEFT = new AnimatedGIF(4,15,"skeleton/left/Skeleton_", ".png");
+  
+  zombieUP = new AnimatedGIF(4,15,"zombie/up/Zombie_", ".png");
+  zombieDOWN = new AnimatedGIF(4,15,"zombie/down/Zombie_", ".png");
+  zombieLEFT = new AnimatedGIF(4,15,"zombie/left/Zombie_", ".png");
+  zombieRIGHT = new AnimatedGIF(4,15,"zombie/right/Zombie_", ".png");
+  
+  dragonUP = new AnimatedGIF(3,15,"dragon/up/dragon_", ".png");
+  dragonDOWN = new AnimatedGIF(3,15,"dragon/down/dragon_", ".png");
+  dragonLEFT = new AnimatedGIF(3,15,"dragon/left/dragon_", ".png");
+  dragonRIGHT = new AnimatedGIF(3,15,"dragon/right/dragon_", ".png");
+  
+  blackhole = new AnimatedGIF(8,5,"blackhole/frame_", "_delay-0.1s.gif");
+  
+  //enemy number (to win)
+  enemynumber = 0;
 
   //create objects
   myObjects = new ArrayList<GameObject>(1000);
@@ -100,9 +149,18 @@ void setup() {
   speedbutton = new Button("Speed+", 100, 300, 50, 50, shadow, unity);
 
   //map
-  map = loadImage("map2.0.png");
-  map2 = loadImage("map.png");
+  map = loadImage("map.png");
+  map2 = loadImage("map2.0.png");
 
+  //fireball
+  fireball = loadImage("fireball.png");
+  
+  //shrink
+  shrink = loadImage("shrink.png");
+  
+  //gun
+  gun = loadImage("gun.png");
+  
   //darkness
   darkness = new ArrayList<DarknessCell>(1000);
   float size = 4;
@@ -136,9 +194,6 @@ void setup() {
     }
     if (roomColor == yellow) {
       myObjects.add(new Spawner(x, y));
-    }
-    if (roomColor == purple) {
-      //add more
     }
     x++;
     if (x == map.width) {
